@@ -1,6 +1,7 @@
 Installation:
 1. Clone repository
      git clone https://github.com/c0n0I/CMPE131ProjectMilestone1.git
+   
      cd "CMPE131 Project Milestone1"
 3. Create and activate virtual environment
      .venv\Scripts\Activate.ps1
