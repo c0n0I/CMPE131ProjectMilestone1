@@ -35,3 +35,28 @@ def add_bookmark():
         return redirect(url_for("main.bookmarks"))
 
     return render_template("main/add_bookmark.html", form=form)
+
+@main_bp.route("/bookmarks/edit/<int:bookmark_id>", methods=["GET", "POST"])
+@login_required
+def edit_bookmark(bookmark_id):
+    bookmark = Bookmark.query.get_or_404(bookmark_id)
+
+    if bookmark.user_id != current_user.id:
+        flash("You cannot edit another user's bookmark.", "danger")
+        return redirect(url_for("main.bookmarks"))
+
+    form = BookmarkForm(obj=bookmark)
+
+    if form.validate_on_submit():
+        bookmark.title = form.title.data
+        bookmark.url = form.url.data
+        db.session.commit()
+        flash("Bookmark updated successfully!", "success")
+        return redirect(url_for("main.bookmarks"))
+    else:
+        if form.is_submitted():
+            flash("Please correct the errors in the form.", "danger")
+
+    return render_template("main/edit_bookmark.html", form=form)
+
+
