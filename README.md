@@ -19,12 +19,23 @@ Run the App:
    
      http://127.0.0.1:5000/
 
+4. Default login user is created in database for testing
+     Enter "testuser" in username to login
+
 Screenshots:
-Index Page
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/196777c1-d579-48b2-93ac-5a6cb3467544" />
-Feature Page
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/eed3c774-66ce-4e1e-a5f3-f1388054e286" />
+Home Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/2d837d0f-b5e1-4e02-af53-21b2e7ceb84f" />
 Login Page
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/56805c12-2188-4258-acf6-9bb1d5156c81" />
-Flash Message
-<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/c587be7c-8da9-45f6-838f-d15a0257f916" />
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/80512631-a6be-4234-89ad-9862bf1f2394" />
+Logged In Home Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/1a89d5f3-4ef8-4947-91f4-b199fb953667" />
+Bookmarks Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/5e83d912-7dc5-4fe8-887d-072c0dcba922" />
+Add Bookmarks Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/8ed48f83-689e-4a27-bbb3-969a03e83fca" />
+Folders Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/d71ef9a9-dd48-4ad9-beb5-cb37097f003d" />
+Add Folder Page
+<img width="2559" height="1439" alt="image" src="https://github.com/user-attachments/assets/33c8204a-4e0b-4c45-8be9-05edcbd6cf3c" />
+
+
