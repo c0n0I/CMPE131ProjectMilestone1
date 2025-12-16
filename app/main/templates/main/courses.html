@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<!-- Page Header -->
+<div class="card">
     <h1>Courses</h1>
-    <a href="{{ url_for('main.new_course') }}">Create New Course</a>
-    <ul>
-        {% for course in courses %}
-            <li>
-                <a href="{{ url_for('main.course_detail', course_id=course.id) }}">
-                    {{ course.title }}
-                </a>
-            </li>
-        {% else %}
-            <li>No courses.</li>
-        {% endfor %}
-    </ul>
+
+    {% if current_user.role == "instructor" %}
+        <a class="btn btn-primary" href="{{ url_for('main.new_course') }}">
+            + Create New Course
+        </a>
+    {% endif %}
+</div>
+
+<!-- Course List -->
+{% if courses %}
+    {% for course in courses %}
+        <div class="card">
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.description }}</p>
+
+            <a class="btn btn-secondary"
+               href="{{ url_for('main.course_detail', course_id=course.id) }}">
+                View Course
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p><em>No courses available.</em></p>
+    </div>
+{% endif %}
+
 {% endblock %}
