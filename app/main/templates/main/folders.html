@@ -1,33 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Your Folders</h1>
 
-<p>
-    <a href="{{ url_for('main.add_folder') }}">+ Create New Folder</a>
-</p>
+<!-- Page Header -->
+<div class="card">
+    <h1>Your Folders</h1>
+    <a class="btn btn-primary" href="{{ url_for('main.add_folder') }}">
+        + Create New Folder
+    </a>
+</div>
 
-<hr>
+<!-- Folder List -->
+<div class="card">
+    {% if folders %}
+        <ul>
+            {% for folder in folders %}
+                <li>
+                    <strong>{{ folder.name }}</strong>
 
-{% if folders %}
-<ul>
-    {% for folder in folders %}
-        <li>
-            {{ folder.name }}
-
-            <form action="{{ url_for('main.delete_folder', folder_id=folder.id) }}"
-                  method="POST"
-                  style="display:inline;">
-                <button type="submit" style="color:red; background:none; border:none; cursor:pointer;">
-                    Delete
-                </button>
-            </form>
-        </li>
-    {% endfor %}
-</ul>
-
-{% else %}
-    <p>You have no folders yet.</p>
-{% endif %}
+                    <form action="{{ url_for('main.delete_folder', folder_id=folder.id) }}"
+                          method="POST"
+                          style="display:inline;">
+                        <button class="btn btn-danger" type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p><em>You have no folders yet.</em></p>
+    {% endif %}
+</div>
 
 {% endblock %}
