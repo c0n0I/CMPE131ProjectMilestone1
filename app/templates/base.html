@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Bookmarking LMS</title>
+    <meta charset="UTF-8">
+    <title>Learning+</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
-<nav>
-    <a href="{{ url_for('main.index') }}">Home</a>
-    <a href="{{ url_for('main.bookmarks') }}">Bookmarks</a>
-    <a href="{{ url_for('main.folders') }}">Folders</a>
-
-    {% if current_user.is_authenticated %}
+<div class="navbar">
+    <div class="nav-left">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('main.bookmarks') }}">Bookmarks</a>
+        <a href="{{ url_for('main.folders') }}">Folders</a>
         <a href="{{ url_for('main.courses') }}">Your Courses</a>
-        <a href="{{ url_for('auth.logout') }}">Logout</a>
-    {% else %}
-        <a href="{{ url_for('auth.login') }}">Login</a>
-    {% endif %}
-</nav>
-<hr>
+    </div>
+    <div class="nav-right">
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a>
+        {% endif %}
+    </div>
+</div>
 
+<div class="container">
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <ul>
-      {% for category, message in messages %}
-        <li><strong>{{ category }}:</strong> {{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
+</div>
 
 </body>
 </html>
