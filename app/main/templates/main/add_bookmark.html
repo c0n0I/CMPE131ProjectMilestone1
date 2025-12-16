@@ -1,49 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Add Bookmark</h2>
+<div class="card">
+    <h1>Add Bookmark</h1>
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+    <form method="POST">
+        {{ form.hidden_tag() }}
 
-    <div>
-        {{ form.title.label }}<br>
-        {{ form.title(size=40) }}
-        {% if form.title.errors %}
-            <ul>
-                {% for error in form.title.errors %}
-                    <li style="color:red;">{{ error }}</li>
+        <!-- Title -->
+        <div>
+            {{ form.title.label }}
+            {{ form.title(class="form-input") }}
+
+            {% if form.title.errors %}
+                <ul>
+                    {% for error in form.title.errors %}
+                        <li style="color:#e74c3c;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- URL -->
+        <div>
+            {{ form.url.label }}
+            {{ form.url(class="form-input") }}
+
+            {% if form.url.errors %}
+                <ul>
+                    {% for error in form.url.errors %}
+                        <li style="color:#e74c3c;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Folder Selection -->
+        <div>
+            <label for="folder_id">Folder (optional)</label>
+            <select name="folder_id">
+                <option value="">-- No Folder --</option>
+                {% for folder in folders %}
+                    <option value="{{ folder.id }}">{{ folder.name }}</option>
                 {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+            </select>
+        </div>
 
-    <div>
-        {{ form.url.label }}<br>
-        {{ form.url(size=40) }}
-        {% if form.url.errors %}
-            <ul>
-                {% for error in form.url.errors %}
-                    <li style="color:red;">{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-
-    <div>
-        <label for="folder_id">Folder (optional)</label><br>
-        <select name="folder_id">
-            <option value="">-- No Folder --</option>
-            {% for folder in folders %}
-                <option value="{{ folder.id }}">{{ folder.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <br>
-
-    <div>
-        {{ form.submit() }}
-    </div>
-</form>
-
+        <!-- Submit -->
+        <div style="margin-top: 15px;">
+            {{ form.submit(class="btn btn-primary") }}
+            <a href="{{ url_for('main.bookmarks') }}" class="btn btn-secondary">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
 {% endblock %}
