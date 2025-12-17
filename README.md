@@ -22,7 +22,8 @@ Run the App:
 4. Default user is created in database to test the application
 
      Enter "testuser" in username to login as student
-     Enter "instructor" in usernmae to login as instructor
+   
+     Enter "instructor" in username to login as instructor
 
 Screenshots:
 Home Page
